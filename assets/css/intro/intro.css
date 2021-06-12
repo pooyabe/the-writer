@@ -1,0 +1,27 @@
+body {
+  background-image: url('../../img/Intro/BackGround.jpeg');
+  background-repeat: no-repeat;
+  background-size: 100% 100vh;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+}
+.container {
+  background-color: rgba(0, 0, 0, 0.5);
+  flex: 0.5;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-around;
+  align-items: center;
+  color: #ffffff;
+  padding-bottom: 5%;
+}
+.title {
+  font-size: 3rem;
+}
+.description {
+  font-size: 1.5rem;
+  padding-right: 10%;
+  padding-left: 10%;
+  line-height: 200%;
+}

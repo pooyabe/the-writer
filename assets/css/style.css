@@ -1,0 +1,42 @@
+/*
+    This the general CSS codes
+*/
+
+@import url("font.css");
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: "Nazanin";
+  direction: rtl;
+  text-align: right;
+  font-weight: normal;
+  user-select: none;
+}
+
+/*
+  Buttons
+  */
+.button {
+  border: none;
+  font-family: "Nazanin";
+  font-size: 1.5rem;
+  padding: 10px 30px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.button:hover {
+  opacity: 0.9;
+}
+.button:active {
+  opacity: 0.6;
+}
+
+.button-blue {
+  background-color: #4361ee;
+  color: #ffedd8;
+}

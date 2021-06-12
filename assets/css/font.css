@@ -1,0 +1,15 @@
+@font-face {
+  font-family: "Nazanin";
+  src: url("../font/Bahij-Nazanin.woff") format("woff"),
+    url("../font/Bahij-Nazanin.TTF") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Nazanin";
+  src: url("../font/Bahij-Nazanin-Bold.woff") format("woff"),
+    url("../font/Bahij-Nazanin-Bold.TTF") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}

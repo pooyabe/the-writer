@@ -20,7 +20,7 @@ function createWindow() {
     },
   });
 
-  win.loadFile("index.html");
+  win.loadFile("./screens/Loading/Loading.html");
 }
 
 app.whenReady().then(() => {
