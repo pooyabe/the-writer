@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/pooyabe/the-writer#readme",
   "devDependencies": {
-    "electron": "^13.1.2"
+    "electron": "^13.1.2",
+    "electron-reloader": "^1.2.1"
   }
 }
