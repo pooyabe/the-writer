@@ -1,0 +1,23 @@
+{
+  "name": "the-writer",
+  "version": "1.0.0",
+  "description": "Just write!",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pooyabe/the-writer.git"
+  },
+  "author": "Pooya Behravesh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pooyabe/the-writer/issues"
+  },
+  "homepage": "https://github.com/pooyabe/the-writer#readme",
+  "devDependencies": {
+    "electron": "^13.1.2"
+  }
+}
