@@ -21,7 +21,8 @@ function createWindow() {
   });
 
   // win.loadFile("./screens/Loading/Loading.html");
-  win.loadFile("./screens/Title/Title.html");
+  // win.loadFile("./screens/Title/Title.html");
+  win.loadFile("./screens/Write/Write.html");
 }
 
 app.whenReady().then(() => {
