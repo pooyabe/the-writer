@@ -133,3 +133,6 @@ jQuery(function($){
         changeSlide(slide_num);
     })
 })
+
+//TODO set in storage for one time load this page
+//TODO redirect to title page

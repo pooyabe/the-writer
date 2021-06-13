@@ -20,7 +20,8 @@ function createWindow() {
     },
   });
 
-  win.loadFile("./screens/Loading/Loading.html");
+  // win.loadFile("./screens/Loading/Loading.html");
+  win.loadFile("./screens/Title/Title.html");
 }
 
 app.whenReady().then(() => {
