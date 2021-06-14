@@ -6,11 +6,11 @@
     <title>The Author</title>
 
     <link rel="stylesheet" href="../../assets/css/style.css" media="screen" />
-    <link rel="stylesheet" href="../../assets/css/intro/intro.css" media="screen" />
-
-
-    <script src="../../assets/js/jquery-3.6.0.min.js"></script>
-    <script src="../../assets/js/intro/slides.js"></script>
+    <link
+      rel="stylesheet"
+      href="../../assets/css/intro/intro.css"
+      media="screen"
+    />
   </head>
   <body>
     <div class="container">
@@ -20,5 +20,22 @@
         <button class="button button-blue"></button>
       </div>
     </div>
+
+    <!-- Insert this line above script imports  -->
+    <script>
+      if (typeof module === "object") {
+        window.module = module;
+        module = undefined;
+      }
+    </script>
+
+    <!-- normal script imports etc  -->
+    <script src="../../assets/js/jquery-3.6.0.min.js"></script>
+    <script src="../../assets/js/intro/slides.js"></script>
+
+    <!-- Insert this line after script imports -->
+    <script>
+      if (window.module) module = window.module;
+    </script>
   </body>
 </html>

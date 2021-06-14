@@ -1,9 +1,16 @@
-const { app, BrowserWindow } = require("electron");
+const { app, BrowserWindow, ipcMain } = require("electron");
 
 // Store Data
 const Store = require("electron-store");
-
 const store = new Store();
+
+
+// ipc messager for check intro finished
+ipcMain.on('finished-intro', function(event, msg){
+  store.set('intro.finished', 1);
+});
+
+
 /**
  * Electron Reload
  */
@@ -17,7 +24,9 @@ function createWindow() {
     fullscreen: 1,
     center: true,
     webPreferences: {
-      devTools: false,
+      nodeIntegration: true,
+      contextIsolation: false,
+      devTools: true,
       textAreasAreResizable: false,
     },
   });
