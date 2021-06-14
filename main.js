@@ -4,10 +4,19 @@ const { app, BrowserWindow, ipcMain } = require("electron");
 const Store = require("electron-store");
 const store = new Store();
 
+/**
+ * 
+ * COMMUNICATE WITH IPC
+ * 
+ */
 
 // ipc messager for check intro finished
 ipcMain.on('finished-intro', function(event, msg){
   store.set('intro.finished', 1);
+});
+// Get new text title
+ipcMain.on('article-title', function(event, msg){
+  store.set('article.title', msg);
 });
 
 

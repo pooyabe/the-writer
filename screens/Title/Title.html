@@ -11,26 +11,39 @@
       href="../../assets/css/title/title.css"
       media="screen"
     />
-
-    <script src="../../assets/js/jquery-3.6.0.min.js"></script>
-    <script src="../../assets/js/title/qoutes.js"></script>
   </head>
   <body>
     <section class="container">
       <main>
-          <h1 class="greeting"></h1>
-          <div class="input-box">
-              <label for="subject">
-                  در چه مورد می‌خوای بنویسی؟
-              </label>
-              <input type="text" name="subject" id="subject" class="subject">
-              <button class="button button-orange"></button>
-          </div>
+        <h1 class="greeting"></h1>
+        <div class="input-box">
+          <label for="subject"> در چه مورد می‌خوای بنویسی؟ </label>
+          <input type="text" name="subject" id="subject" class="subject" />
+          <button class="button button-orange"></button>
+        </div>
       </main>
-      <footer>    
+      <footer>
         <div class="qoute"></div>
         <div class="source"></div>
       </footer>
     </section>
+
+    <!-- Insert this line above script imports  -->
+    <script>
+      if (typeof module === "object") {
+        window.module = module;
+        module = undefined;
+      }
+    </script>
+
+    <!-- normal script imports etc  -->
+    <script src="../../assets/js/jquery-3.6.0.min.js"></script>
+    <script src="../../assets/js/title/qoutes.js"></script>
+    <script src="../../assets/js/title/submit.js"></script>
+
+    <!-- Insert this line after script imports -->
+    <script>
+      if (window.module) module = window.module;
+    </script>
   </body>
 </html>
