@@ -1,13 +1,15 @@
 const { app, BrowserWindow } = require("electron");
 
+// Store Data
+const Store = require("electron-store");
 
+const store = new Store();
 /**
  * Electron Reload
  */
 try {
   require("electron-reloader")(module);
 } catch (_) {}
-
 
 function createWindow() {
   const win = new BrowserWindow({
@@ -20,9 +22,18 @@ function createWindow() {
     },
   });
 
-  // win.loadFile("./screens/Loading/Loading.html");
-  // win.loadFile("./screens/Title/Title.html");
-  win.loadFile("./screens/Write/Write.html");
+  // Check if User finished intro
+  let intro_check = store.get("did_end_intro", 0);
+
+  if (intro_check) {
+
+    // If user had finished intro, so load the title screen
+
+    win.loadFile("./screens/Title/Title.html");
+  } else {
+    win.loadFile("./screens/Loading/Loading.html");
+  }
+  
 }
 
 app.whenReady().then(() => {
