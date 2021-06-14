@@ -11,7 +11,7 @@ jQuery(function ($) {
     const today = moment();
     const days_passed = today.diff(submit_date, "days");
     var lock = 'lock';
-    if(days_passed >= 7){
+    if(days_passed >= 3){
         lock = 'unlock';
     }
 
