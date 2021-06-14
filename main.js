@@ -1,5 +1,9 @@
 const { app, BrowserWindow, ipcMain, remote } = require("electron");
 
+// Connect to database
+const sqlite3 = require("sqlite3");
+const db = new sqlite3.Database("./DB/database.db");
+
 // Store Data
 const Store = require("electron-store");
 const store = new Store();
@@ -55,6 +59,7 @@ function createWindow() {
 ipcMain.on("finished-intro", function (event, msg) {
   store.set("intro.finished", 1);
 });
+
 // Get new text title
 ipcMain.on("article-title", function (event, msg) {
   // Get now date and store it with title
@@ -67,10 +72,42 @@ ipcMain.on("article-title", function (event, msg) {
   store.set("article.date", now);
 });
 
+/**
+ *
+ * Store new content in writints db
+ *
+ */
+ipcMain.on("new-writing", function (event, content) {
+  storeData(content).then(()=>{
+    event.returnValue = 1;
+  }).catch((e)=>{
+    event.returnValue = 0;
+  })
+});
+
+const storeData = async (content) => {
+  // WRITING meta
+  const title = store.get("article.title");
+  const date = store.get("article.date");
+
+  await db.serialize(function () {
+    var stmt = db.prepare(
+      `INSERT INTO writings(title, content, date) VALUES ("${title}", "${content}", "${date}")`
+    );
+    stmt.run();
+    stmt.finalize();
+  });
+};
 
 
 
 
+// Run window
 app.whenReady().then(() => {
   createWindow();
+});
+
+// Close DataBase Connection before quiting
+app.on("will-quit", function () {
+  db.close();
 });
