@@ -5,12 +5,27 @@ jQuery(function ($) {
   // Receive the response from Main
   ipcRenderer.on("pre-writings", function (e, r) {
     res = JSON.parse(r);
-    const date = moment(res[2], 'YYYY-M-D').format('jD jMMMM jYYYY');
+
+    // Check for lock or unlock the writing
+    const submit_date = moment(res[2], "YYYY-M-D");
+    const today = moment();
+    const days_passed = today.diff(submit_date, "days");
+    var lock = 'lock';
+    if(days_passed >= 7){
+        lock = 'unlock';
+    }
+
+
+
+    // Jalali date of writing
+    const jDate = moment(res[2], "YYYY-M-D").format("jD jMMMM jYYYY");
+
+
     // Show res
     $(".list").append(`
-            <li class="list-item" data-lock="lock" data-id="${res[0]}">
-                <span>${res[1]}  <small class="pre-date">(${date})</small></span>
-                <img src="../../assets/img/write/lock.png" class="lock" />
+            <li class="list-item" data-lock="${lock}" data-id="${res[0]}">
+                <span>${res[1]}  <small class="pre-date">(${jDate})</small></span>
+                <img src="../../assets/img/write/${lock}.png" class="lock" />
             </li>
         `);
   });
