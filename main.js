@@ -36,6 +36,7 @@ function createWindow() {
     // If user had finished intro, so load the title screen
 
     win.loadFile("./screens/Title/Title.html");
+    // win.loadFile("./screens/Write/Write.html");
   } else {
     win.loadFile("./screens/Loading/Loading.html");
   }
@@ -99,6 +100,22 @@ const storeData = async (content) => {
   });
 };
 
+/**
+ * 
+ * Hear for previous writings request and answer
+ * 
+ */
+ipcMain.on('pre-writings', function(e){
+  var response = [];
+  db.serialize(function () {
+    db.each("SELECT id, title, date FROM writings ORDER BY id DESC", function (err, row) {
+
+      response = [row.id, row.title, row.date];
+      e.reply('pre-writings', JSON.stringify(response));
+
+    });
+  });
+});
 
 
 
