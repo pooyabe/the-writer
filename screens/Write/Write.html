@@ -32,6 +32,7 @@
       </div>
       <article>
         <textarea name="text" id="text" placeholder="بنویس..."></textarea>
+        <a href="#" class="save">بفرست برای ناشر</a>
       </article>
     </section>
     <section class="left-bar">
@@ -63,10 +64,13 @@
       const electron = require("electron");
       const Store = require("electron-store");
       const moment = require('moment-jalaali');
+
+      const { ipcRenderer } = electron;
     </script>
 
     <script src="../../assets/js/write/header.js"></script>
     <script src="../../assets/js/write/action.js"></script>
+    <script src="../../assets/js/write/store.js"></script>
 
     <!-- Insert this line after script imports -->
     <script>

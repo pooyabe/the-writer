@@ -1,5 +1,3 @@
-const { ipcRenderer } = electron;
-
 jQuery(function ($) {
   /**
    *
