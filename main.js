@@ -16,7 +16,12 @@ ipcMain.on('finished-intro', function(event, msg){
 });
 // Get new text title
 ipcMain.on('article-title', function(event, msg){
+  // Get now date and store it with title
+  const now_date = new Date();
+  const now = `${now_date.getFullYear()}-${now_date.getMonth() + 1 }-${now_date.getDate()}`;
+
   store.set('article.title', msg);
+  store.set('article.date', now);
 });
 
 

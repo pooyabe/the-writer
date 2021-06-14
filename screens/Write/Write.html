@@ -11,9 +11,6 @@
       href="../../assets/css/write/write.css"
       media="screen"
     />
-
-    <script src="../../assets/js/jquery-3.6.0.min.js"></script>
-    <script src="../../assets/js/write/"></script>
   </head>
   <body>
     <section class="right-bar">
@@ -23,18 +20,15 @@
           <span>خروج</span>
         </div>
         <div class="action">
-          <img
-            class="action-size"
-            src="../../assets/img/write/size.png"
-          />
+          <img class="action-size" src="../../assets/img/write/size.png" />
           <span>تغییر سایز پنجره</span>
         </div>
       </div>
     </section>
     <section class="middle-bar">
       <div class="header">
-        <h2 class="title">اینجا متن عنوان نوشته است</h2>
-        <h5>2 فروردین 1400</h5>
+        <h2 class="title"></h2>
+        <h5 class="date"></h5>
       </div>
       <article>
         <textarea name="text" id="text" placeholder="بنویس..."></textarea>
@@ -43,15 +37,32 @@
     <section class="left-bar">
       <h2>نوشته‌های پیشین</h2>
       <ul class="list">
-        <li class="list-item">
+        <!-- <li class="list-item">
           <span>نوشته پیشین</span>
           <img src="../../assets/img/write/unlock.png" class="lock" />
         </li>
         <li class="list-item">
           <span>نوشته پیشین</span>
           <img src="../../assets/img/write/lock.png" class="lock" />
-        </li>
+        </li> -->
       </ul>
     </section>
+
+    <!-- Insert this line above script imports  -->
+    <script>
+      if (typeof module === "object") {
+        window.module = module;
+        module = undefined;
+      }
+    </script>
+
+    <!-- normal script imports etc  -->
+    <script src="../../assets/js/jquery-3.6.0.min.js"></script>
+    <script src="../../assets/js/write/header.js"></script>
+
+    <!-- Insert this line after script imports -->
+    <script>
+      if (window.module) module = window.module;
+    </script>
   </body>
 </html>
