@@ -23,7 +23,7 @@ function createWindow() {
   });
 
   // Check if User finished intro
-  let intro_check = store.get("did_end_intro", 0);
+  let intro_check = store.get("intro.finished", 0);
 
   if (intro_check) {
 
