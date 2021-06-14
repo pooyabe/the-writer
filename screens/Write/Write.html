@@ -15,13 +15,13 @@
   <body>
     <section class="right-bar">
       <div class="action-buttons">
-        <div class="action">
+        <div class="action close-btn">
           <img class="action-close" src="../../assets/img/write/close.png" />
           <span>خروج</span>
         </div>
-        <div class="action">
-          <img class="action-size" src="../../assets/img/write/size.png" />
-          <span>تغییر سایز پنجره</span>
+        <div class="action minimize-btn">
+          <img class="action-size" src="../../assets/img/write/window-minimize.png" />
+          <span>کوچک کردن</span>
         </div>
       </div>
     </section>
@@ -58,7 +58,15 @@
 
     <!-- normal script imports etc  -->
     <script src="../../assets/js/jquery-3.6.0.min.js"></script>
+
+    <script>
+      const electron = require("electron");
+      const Store = require("electron-store");
+      const moment = require('moment-jalaali');
+    </script>
+
     <script src="../../assets/js/write/header.js"></script>
+    <script src="../../assets/js/write/action.js"></script>
 
     <!-- Insert this line after script imports -->
     <script>

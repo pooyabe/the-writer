@@ -1,12 +1,9 @@
-const electron = require("electron");
-var moment = require('moment-jalaali')
 moment.loadPersian({
     usePersianDigits: 1,
     dialect: "persian-modern"
 })
 
 // Get stored user data
-const Store = require("electron-store");
 const store = new Store();
 
 jQuery(function($){
