@@ -2,7 +2,7 @@ const { app, BrowserWindow, ipcMain } = require("electron");
 
 // Connect to database
 const Database = require('better-sqlite3');
-const db = new Database('./DB/database.db', {});
+const db = new Database(__dirname + '/DB/database.db', {});
 
 // Store Data
 const Store = require("electron-store");
@@ -29,10 +29,10 @@ function createWindow() {
   if (intro_check) {
     // If user had finished intro, so load the title screen
 
-    win.loadFile("./screens/Title/Title.html");
+    win.loadFile(__dirname + "/screens/Title/Title.html");
     // win.loadFile("./screens/Write/Write.html");
   } else {
-    win.loadFile("./screens/Loading/Loading.html");
+    win.loadFile(__dirname + "/screens/Loading/Loading.html");
   }
 
   // Action Windows
