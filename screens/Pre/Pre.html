@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>The Author</title>
+
+    <link rel="stylesheet" href="../../assets/css/style.css" media="screen" />
+
+    <style>
+      body {
+        background-color: rgba(0, 0, 0, 0.1);
+      }
+      body::-webkit-scrollbar {
+        width: 0.4rem;
+      }
+      body::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.3);
+        border-radius: 50px;
+      }
+      body::-webkit-scrollbar-thumb {
+        background-color: rgba(0, 0, 0, 0.3);
+        outline: none;
+        border-radius: 50px;
+      }
+      .title,
+      .content {
+        padding: 2%;
+      }
+      .content {
+        font-size: 1.5rem;
+      }
+      .date {
+        margin-top: 5%;
+        padding-top: 5%;
+        text-align: left;
+        padding-left: 5%;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 class="title">در حال بارگذاری</h1>
+    <div class="content"></div>
+    <div class="date"></div>
+
+    <!-- Insert this line above script imports  -->
+    <script>
+      if (typeof module === "object") {
+        window.module = module;
+        module = undefined;
+      }
+    </script>
+
+    <!-- normal script imports etc  -->
+    <script src="../../assets/js/jquery-3.6.0.min.js"></script>
+
+    <script>
+      const electron = require("electron");
+      const Store = require("electron-store");
+      const moment = require("moment-jalaali");
+
+      const { ipcRenderer } = electron;
+    </script>
+
+    <script src="../../assets/js/pre/get-content.js"></script>
+
+    <!-- Insert this line after script imports -->
+    <script>
+      if (window.module) module = window.module;
+    </script>
+  </body>
+</html>

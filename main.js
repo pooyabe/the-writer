@@ -79,11 +79,13 @@ ipcMain.on("article-title", function (event, msg) {
  *
  */
 ipcMain.on("new-writing", function (event, content) {
-  storeData(content).then(()=>{
-    event.returnValue = 1;
-  }).catch((e)=>{
-    event.returnValue = 0;
-  })
+  storeData(content)
+    .then(() => {
+      event.returnValue = 1;
+    })
+    .catch((e) => {
+      event.returnValue = 0;
+    });
 });
 
 const storeData = async (content) => {
@@ -101,23 +103,44 @@ const storeData = async (content) => {
 };
 
 /**
- * 
+ *
  * Hear for previous writings request and answer
- * 
+ *
  */
-ipcMain.on('pre-writings', function(e){
+ipcMain.on("pre-writings", function (e) {
   var response = [];
   db.serialize(function () {
-    db.each("SELECT id, title, date FROM writings ORDER BY id DESC", function (err, row) {
-
-      response = [row.id, row.title, row.date];
-      e.reply('pre-writings', JSON.stringify(response));
-
-    });
+    db.each(
+      "SELECT id, title, date FROM writings ORDER BY id DESC",
+      function (err, row) {
+        response = [row.id, row.title, row.date];
+        e.reply("pre-writings", JSON.stringify(response));
+      }
+    );
   });
 });
 
+/**
+ *
+ * Set pre writing id in config and load content
+ *
+ */
+ipcMain.on("set-pre-writing", function (e, id) {
+  store.set("article.pre.id", id);
+});
 
+ipcMain.on("get-pre-writing", function (e) {
+  var id = store.get("article.pre.id");
+  db.serialize(function () {
+    db.each(
+      `SELECT title, date, content FROM writings WHERE id = "${id}"`,
+      function (err, row) {
+        response = [row.content, row.title, row.date];
+        e.reply("get-pre-writing", JSON.stringify(response));
+      }
+    );
+  });
+});
 
 // Run window
 app.whenReady().then(() => {

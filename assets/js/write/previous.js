@@ -23,8 +23,8 @@ jQuery(function ($) {
 
     // Show res
     $(".list").append(`
-            <li class="list-item" data-lock="${lock}" data-id="${res[0]}">
-                <span>${res[1]}  <small class="pre-date">(${jDate})</small></span>
+            <li class="list-item" data-lock="${lock}" data-id="${res[0]}" onClick="listClicked(this);">
+                <span>${res[1]} <small class="pre-date">(${jDate})</small></span>
                 <img src="../../assets/img/write/${lock}.png" class="lock" />
             </li>
         `);
