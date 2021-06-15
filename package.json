@@ -19,7 +19,7 @@
   "homepage": "https://github.com/pooyabe/the-writer#readme",
   "devDependencies": {
     "electron": "^13.1.2",
-    "electron-rebuild": "^2.3.5",
+    "electron-rebuild": "^2.3.5"
   },
   "dependencies": {
     "electron-store": "^8.0.0",
