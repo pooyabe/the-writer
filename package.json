@@ -22,8 +22,8 @@
     "electron-rebuild": "^2.3.5"
   },
   "dependencies": {
+    "better-sqlite3": "^7.4.1",
     "electron-store": "^8.0.0",
-    "moment-jalaali": "^0.9.2",
-    "sqlite3": "^5.0.2"
+    "moment-jalaali": "^0.9.2"
   }
 }

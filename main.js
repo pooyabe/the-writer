@@ -1,8 +1,8 @@
 const { app, BrowserWindow, ipcMain } = require("electron");
 
 // Connect to database
-const sqlite3 = require("sqlite3");
-const db = new sqlite3.Database("./DB/database.db");
+const Database = require('better-sqlite3');
+const db = new Database('./DB/database.db', {});
 
 // Store Data
 const Store = require("electron-store");
@@ -87,13 +87,9 @@ const storeData = async (content) => {
   const title = store.get("article.title");
   const date = store.get("article.date");
 
-  await db.serialize(function () {
-    var stmt = db.prepare(
-      `INSERT INTO writings(title, content, date) VALUES ("${title}", "${content}", "${date}")`
-    );
-    stmt.run();
-    stmt.finalize();
-  });
+  const stmt = db.prepare(`INSERT INTO writings(title, content, date) VALUES (?, ?, ?)`);
+  const info = stmt.run(title, content, date);
+  info.changes;
 };
 
 /**
@@ -103,15 +99,13 @@ const storeData = async (content) => {
  */
 ipcMain.on("pre-writings", function (e) {
   var response = [];
-  db.serialize(function () {
-    db.each(
-      "SELECT id, title, date FROM writings ORDER BY id DESC",
-      function (err, row) {
-        response = [row.id, row.title, row.date];
-        e.reply("pre-writings", JSON.stringify(response));
-      }
-    );
-  });
+
+  const stmt = db.prepare('SELECT * FROM writings');
+
+  for (const row of stmt.iterate()) {
+    response = [row.id, row.title, row.date];
+    e.reply("pre-writings", JSON.stringify(response));
+  }
 });
 
 /**
@@ -125,15 +119,12 @@ ipcMain.on("set-pre-writing", function (e, id) {
 
 ipcMain.on("get-pre-writing", function (e) {
   var id = store.get("article.pre.id");
-  db.serialize(function () {
-    db.each(
-      `SELECT title, date, content FROM writings WHERE id = "${id}"`,
-      function (err, row) {
-        response = [row.content, row.title, row.date];
-        e.reply("get-pre-writing", JSON.stringify(response));
-      }
-    );
-  });
+
+  const stmt = db.prepare(`SELECT title, date, content FROM writings WHERE id = ?`);
+  const row = stmt.get(id);
+
+  var response = [row.content, row.title, row.date];
+  e.reply("get-pre-writing", JSON.stringify(response));
 });
 
 // Run window
@@ -143,5 +134,5 @@ app.whenReady().then(() => {
 
 // Close DataBase Connection before quiting
 app.on("will-quit", function () {
-  db.close();
+  db.close()
 });
