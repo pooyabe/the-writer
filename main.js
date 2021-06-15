@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain, remote } = require("electron");
+const { app, BrowserWindow, ipcMain } = require("electron");
 
 // Connect to database
 const sqlite3 = require("sqlite3");
@@ -7,12 +7,6 @@ const db = new sqlite3.Database("./DB/database.db");
 // Store Data
 const Store = require("electron-store");
 const store = new Store();
-/**
- * Electron Reload
- */
-try {
-  require("electron-reloader")(module);
-} catch (_) {}
 
 function createWindow() {
   const win = new BrowserWindow({

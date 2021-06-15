@@ -20,7 +20,6 @@
   "devDependencies": {
     "electron": "^13.1.2",
     "electron-rebuild": "^2.3.5",
-    "electron-reloader": "^1.2.1"
   },
   "dependencies": {
     "electron-store": "^8.0.0",
